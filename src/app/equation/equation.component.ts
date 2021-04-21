@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MathValidators } from '../math-validators';
 
 @Component({
   selector: 'app-equation',
@@ -11,7 +12,9 @@ export class EquationComponent implements OnInit {
     a: new FormControl(this.randomNumber()),
     b: new FormControl(this.randomNumber()),
     answer: new FormControl("")
-  })
+  },[
+     MathValidators.isCorrect("answer","a","b")
+  ])
   constructor() { }
 
   ngOnInit(): void {
